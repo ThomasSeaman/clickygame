@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
+import Score from "./components/Score";
 import friends from "./friends.json";
 import "./App.css";
 
@@ -28,6 +29,7 @@ removeFriend = id => {
     return (
       <Wrapper>
         <Title>Sports Memory Challenge</Title>
+        <Score>Score: 0 | Top Score: 0</Score>
         {this.state.friends.map(friend => (
           <FriendCard
             removeFriend={this.removeFriend}
