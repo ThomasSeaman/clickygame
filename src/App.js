@@ -22,17 +22,34 @@ scoreKeeper = () => {
       highScore: this.state.highScore +1,
       score: this.state.score +1
     })
-    console.log('if');
-    
-  } else {
+    console.log('if'); 
+  }if(this.state.score == 11){
+    alert("Winner!")
+    this.resetGame()
+  } 
+  if(this.state.chosenSports[0] === this.state.chosenSports[1]){
+    alert("You Lost!")
+    this.resetGame()
+  }
+  else {
     this.setState({score: this.state.score +1 })
     console.log('else');
-    
   }
 }  
 
-shuffleSports = () => {
+resetGame = () => {
+  this.setState({score:0})
+  this.setState({chosenSports:[]})
+}
 
+shuffle = id => {
+  // Shuffle the array
+  for (let i = friends.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [friends[i], friends[j]] = [friends[j], friends[i]];
+  }
+  // Update state with new array
+  this.setState({ friends });
 }
 // removeFriend = id => {
 //     // Filter this.state.friends for friends with an id not equal to the id being removed
@@ -49,11 +66,12 @@ imageClickHandler = event => {
 
   this.state.chosenSports.push(id)
   this.scoreKeeper()
+  this.shuffle()
 };
-logMe(){
-  console.log(this.state);
+// logMe(){
+//   console.log(this.state);
   
-}
+// }
 // programHandler = (event) => {
 //   //console.log(event.target.value)
 //   this.setState({program: event.target.value})
@@ -76,7 +94,7 @@ logMe(){
           />
         ))}
         </div>
-        <button onClick={() => this.logMe()}>Log Me</button>
+        {/* <button onClick={() => this.logMe()}>Log Me</button> */}
         {/* <button onClick={this.logMe.bind(this)}>Log Me</button> */}
       </div>
     );
