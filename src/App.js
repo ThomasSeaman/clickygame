@@ -24,18 +24,15 @@ scoreKeeper = () => {
     })
     console.log('if'); 
   }if(this.state.score == 11){
-    alert("Winner!")
+    alert("Winner! What a memory you have.")
     this.resetGame()
   } 
-  if(this.state.chosenSports[0] === this.state.chosenSports[1]){
-    alert("You Lost!")
-    this.resetGame()
-  }
   else {
     this.setState({score: this.state.score +1 })
     console.log('else');
   }
 }  
+
 
 resetGame = () => {
   this.setState({score:0})
@@ -67,7 +64,15 @@ imageClickHandler = event => {
   this.state.chosenSports.push(id)
   this.scoreKeeper()
   this.shuffle()
+  this.hasDuplicates()
 };
+
+hasDuplicates = (array)=> {
+  
+  const sorted_arr = this.state.chosenSports.slice().sort();
+  console.log(sorted_arr)
+  
+}
 // logMe(){
 //   console.log(this.state);
   
