@@ -8,26 +8,52 @@ import "./App.css";
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
-    friends
+    friends,
+    chosenSports: [],
+    score: 0,
+    highScore: 0
   };
 
 
+scoreKeeper = () => {
+
+  if(this.state.score >= this.state.highScore){
+    this.setState({
+      highScore: this.state.highScore +1,
+      score: this.state.score +1
+    })
+    console.log('if');
+    
+  } else {
+    this.setState({score: this.state.score +1 })
+    console.log('else');
+    
+  }
+}  
+
+shuffleSports = () => {
+
+}
 // removeFriend = id => {
 //     // Filter this.state.friends for friends with an id not equal to the id being removed
 //     // const friends = this.state.friends.filter(friend => friend.id !== id);
 //     // Set this.state.friends equal to the new friends array
 //     // this.setState({ friends });
 //     let chosenSports = []
-//     chosenSports.push(id)
 //     console.log(chosenSports)
 // };
 
 imageClickHandler = event => {
- 
-    console.log(event)
   
-  
+  const { id, alt } = event.target
+
+  this.state.chosenSports.push(id)
+  this.scoreKeeper()
 };
+logMe(){
+  console.log(this.state);
+  
+}
 // programHandler = (event) => {
 //   //console.log(event.target.value)
 //   this.setState({program: event.target.value})
@@ -38,7 +64,7 @@ imageClickHandler = event => {
     return (
       <div className="row">
         <Title></Title>
-        <Score></Score>
+        <Score score={this.state.score} highScore={this.state.highScore}></Score>
       <div className="row">
         {this.state.friends.map(friend => (
           <FriendCard
@@ -50,6 +76,8 @@ imageClickHandler = event => {
           />
         ))}
         </div>
+        <button onClick={() => this.logMe()}>Log Me</button>
+        {/* <button onClick={this.logMe.bind(this)}>Log Me</button> */}
       </div>
     );
   }

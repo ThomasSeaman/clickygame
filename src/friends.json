@@ -2,7 +2,8 @@
   {
     "id": 1,
     "name": "Baseball",
-    "image": "./images/baseball.png"
+    "image": "./images/baseball.png",
+    "isSelected": 0
   },
   {
     "id": 2,
