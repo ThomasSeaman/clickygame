@@ -12,7 +12,7 @@
 ![](./public/images/clickygamelost.png)
 
 > Screenshot of a high score
-![](./public/images/clickygamescore.png)
+![](./public/images/clickgamescore.png)
 
 ## Dependencies
 
